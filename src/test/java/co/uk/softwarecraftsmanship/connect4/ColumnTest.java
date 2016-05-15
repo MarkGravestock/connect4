@@ -1,5 +1,4 @@
 package co.uk.softwarecraftsmanship.connect4;
-import co.uk.softwarecraftsmanship.connect4.Column;
 import org.junit.Before;
 import org.junit.Test;
 

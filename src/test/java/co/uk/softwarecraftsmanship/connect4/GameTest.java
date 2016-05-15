@@ -1,7 +1,5 @@
 package co.uk.softwarecraftsmanship.connect4;
 
-import co.uk.softwarecraftsmanship.connect4.Colour;
-import co.uk.softwarecraftsmanship.connect4.Game;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
