@@ -1,6 +1,5 @@
 package co.uk.softwarecraftsmanship.connect4;
 
-import co.uk.softwarecraftsmanship.connect4.Board;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -61,9 +60,7 @@ public class BoardTest {
     @Test
     public void when_a_token_is_placed_in_the_eight_column_then_the_move_is_invalid(){
 
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            board.placeTokenAt(8);
-        });
+        assertThrows(IndexOutOfBoundsException.class, () -> board.placeTokenAt(8));
     }
 
     @Test
