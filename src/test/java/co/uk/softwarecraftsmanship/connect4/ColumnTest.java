@@ -1,18 +1,18 @@
 package co.uk.softwarecraftsmanship.connect4;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 public class ColumnTest {
 
     private Column column;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         column = new Column();
     }

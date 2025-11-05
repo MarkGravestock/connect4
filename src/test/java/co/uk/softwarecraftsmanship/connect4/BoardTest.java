@@ -1,17 +1,18 @@
 package co.uk.softwarecraftsmanship.connect4;
 
 import co.uk.softwarecraftsmanship.connect4.Board;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BoardTest {
 
     private Board board;
 
-    @Before
+    @BeforeEach
     public void setup(){
         board = new Board();
     }
@@ -57,10 +58,12 @@ public class BoardTest {
         assertThat(board.hasTokenAt(1,1), is(true));
     }
 
-    @Test(expected=IndexOutOfBoundsException.class)
+    @Test
     public void when_a_token_is_placed_in_the_eight_column_then_the_move_is_invalid(){
 
-        board.placeTokenAt(8);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            board.placeTokenAt(8);
+        });
     }
 
     @Test
