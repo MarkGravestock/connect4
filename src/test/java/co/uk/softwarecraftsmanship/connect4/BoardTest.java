@@ -71,7 +71,7 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertThat(HasWon(board), is(true));
+        assertThat(hasWon(board), is(true));
 
     }
 
@@ -82,7 +82,7 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertThat(HasWon(board), is(false));
+        assertThat(hasWon(board), is(false));
 
     }
 
@@ -94,10 +94,10 @@ public class BoardTest {
         board.placeTokenAt(2);
         board.placeTokenAt(3);
 
-        assertThat(HasWon(board), is(true));
+        assertThat(hasWon(board), is(true));
     }
 
-    private boolean HasWon(Board board) {
+    private boolean hasWon(Board board) {
         return board.hasTokenAt(3, 0) || board.hasTokenAt(1, 3);
     }
 }

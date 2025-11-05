@@ -1,13 +1,13 @@
 package co.uk.softwarecraftsmanship.connect4;
 
 public class Board {
-    private Column[] columns;
+    private final Column[] columns;
 
     public Board() {
-        int numberOfColums = 7;
-        columns = new Column[numberOfColums];
+        int numberOfColumns = 7;
+        columns = new Column[numberOfColumns];
 
-        for (int i = 0; i < numberOfColums; i++){
+        for (int i = 0; i < numberOfColumns; i++){
             columns[i] = new Column();
         }
     }
