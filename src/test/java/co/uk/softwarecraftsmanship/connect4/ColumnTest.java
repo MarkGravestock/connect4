@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class ColumnTest {
 
@@ -21,19 +20,19 @@ public class ColumnTest {
     @Test
     public void when_a_token_is_placed_in_an_empty_column_it_occupies_the_lowest_row() {
         column.placeToken();
-        assertTrue(column.hasTokenAt(0));
+        assertThat(column.hasTokenAt(0), is(true));
     }
 
     @Test
     public void when_two_tokens_are_placed_in_column_the_third_row_is_free() {
         PlaceTokens(2);
-        assertFalse(column.hasTokenAt(2));
+        assertThat(column.hasTokenAt(2), is(false));
     }
 
     @Test
     public void when_the_seventh_token_is_placed_in_a_column_the_move_is_invalid() {
         PlaceTokens(6);
-        assertFalse(column.placeToken());
+        assertThat(column.placeToken(), is(false));
     }
 
     private void PlaceTokens(int numberOfTokens) {
@@ -44,13 +43,13 @@ public class ColumnTest {
 
     @Test
     public void when_placing_a_token_in_an_empty_column_the_move_is_valid() {
-        assertTrue(column.placeToken());
+        assertThat(column.placeToken(), is(true));
     }
 
     @Test
     public void when_three_tokens_are_token_are_placed_in_column_then_the_fourth_row_is_free() {
         PlaceTokens(3);
-        assertFalse(column.hasTokenAt(3));
+        assertThat(column.hasTokenAt(3), is(false));
     }
 
     @Test
@@ -61,8 +60,8 @@ public class ColumnTest {
 
         PlaceTokenInColumn(2, columns);
 
-        assertFalse(first.hasTokenAt(0));
-        assertTrue(second.hasTokenAt(0));
+        assertThat(first.hasTokenAt(0), is(false));
+        assertThat(second.hasTokenAt(0), is(true));
     }
 
     @Test
@@ -74,9 +73,9 @@ public class ColumnTest {
 
         PlaceTokenInColumn(3, columns);
 
-        assertFalse(first.hasTokenAt(0));
-        assertFalse(second.hasTokenAt(0));
-        assertTrue(third.hasTokenAt(0));
+        assertThat(first.hasTokenAt(0), is(false));
+        assertThat(second.hasTokenAt(0), is(false));
+        assertThat(third.hasTokenAt(0), is(true));
 
     }
 

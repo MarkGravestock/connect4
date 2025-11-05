@@ -4,9 +4,9 @@ import co.uk.softwarecraftsmanship.connect4.Board;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BoardTest {
 
@@ -22,8 +22,8 @@ public class BoardTest {
 
         board.placeTokenAt(0);
 
-        assertTrue(board.hasTokenAt(0,0));
-        assertFalse(board.hasTokenAt(1,0));
+        assertThat(board.hasTokenAt(0,0), is(true));
+        assertThat(board.hasTokenAt(1,0), is(false));
     }
 
     @Test
@@ -32,8 +32,8 @@ public class BoardTest {
         board.placeTokenAt(0);
         board.placeTokenAt(1);
 
-        assertTrue(board.hasTokenAt(0,0));
-        assertTrue(board.hasTokenAt(1,0));
+        assertThat(board.hasTokenAt(0,0), is(true));
+        assertThat(board.hasTokenAt(1,0), is(true));
     }
 
     @Test
@@ -42,9 +42,9 @@ public class BoardTest {
         board.placeTokenAt(0);
         board.placeTokenAt(0);
 
-        assertTrue(board.hasTokenAt(0,0));
-        assertTrue(board.hasTokenAt(0,1));
-        assertFalse(board.hasTokenAt(1,0));
+        assertThat(board.hasTokenAt(0,0), is(true));
+        assertThat(board.hasTokenAt(0,1), is(true));
+        assertThat(board.hasTokenAt(1,0), is(false));
     }
 
     @Test
@@ -53,9 +53,9 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertFalse(board.hasTokenAt(0,0));
-        assertTrue(board.hasTokenAt(1,0));
-        assertTrue(board.hasTokenAt(1,1));
+        assertThat(board.hasTokenAt(0,0), is(false));
+        assertThat(board.hasTokenAt(1,0), is(true));
+        assertThat(board.hasTokenAt(1,1), is(true));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertTrue(HasWon(board));
+        assertThat(HasWon(board), is(true));
 
     }
 
@@ -85,7 +85,7 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertFalse(HasWon(board));
+        assertThat(HasWon(board), is(false));
 
     }
 
@@ -97,7 +97,7 @@ public class BoardTest {
         board.placeTokenAt(2);
         board.placeTokenAt(3);
 
-        assertTrue(HasWon(board));
+        assertThat(HasWon(board), is(true));
     }
 
     private boolean HasWon(Board board) {

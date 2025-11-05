@@ -2,8 +2,8 @@ package co.uk.softwarecraftsmanship.connect4;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class GameTest {
 
@@ -14,7 +14,7 @@ public class GameTest {
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
-        assertTrue(game.hasWinner(Colour.Red));
+        assertThat(game.hasWinner(Colour.Red), is(true));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class GameTest {
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
-        assertFalse(game.hasWinner(Colour.Red));
+        assertThat(game.hasWinner(Colour.Red), is(false));
     }
 
 }
