@@ -19,7 +19,7 @@ This project uses:
 ### Running Tests Locally
 
 ```bash
-gradle test
+.\gradlew.bat test
 ```
 
 ### Build Status
