@@ -1,0 +1,1 @@
+# Java\nbuild/\n.gradle/\nlib/\n*.class\n*.jar\n*.war\n*.ear\n\n# IDE\n.idea/\n*.iml\n*.ipr\n*.iws\nout/\n\n# OS\n.DS_Store\nThumbs.db

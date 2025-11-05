@@ -1,18 +1,19 @@
 package co.uk.softwarecraftsmanship.connect4;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ColumnTest {
 
     private Column column;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         column = new Column();
     }
@@ -20,19 +21,19 @@ public class ColumnTest {
     @Test
     public void when_a_token_is_placed_in_an_empty_column_it_occupies_the_lowest_row() {
         column.placeToken();
-        assertThat(column.hasTokenAt(0), is(true));
+        assertTrue(column.hasTokenAt(0));
     }
 
     @Test
     public void when_two_tokens_are_placed_in_column_the_third_row_is_free() {
         PlaceTokens(2);
-        assertThat(column.hasTokenAt(2), is(false));
+        assertFalse(column.hasTokenAt(2));
     }
 
     @Test
     public void when_the_seventh_token_is_placed_in_a_column_the_move_is_invalid() {
         PlaceTokens(6);
-        assertThat(column.placeToken(), is(false));
+        assertFalse(column.placeToken());
     }
 
     private void PlaceTokens(int numberOfTokens) {
@@ -43,13 +44,13 @@ public class ColumnTest {
 
     @Test
     public void when_placing_a_token_in_an_empty_column_the_move_is_valid() {
-        assertThat(column.placeToken(), is(true));
+        assertTrue(column.placeToken());
     }
 
     @Test
     public void when_three_tokens_are_token_are_placed_in_column_then_the_fourth_row_is_free() {
         PlaceTokens(3);
-        assertThat(column.hasTokenAt(3), is(false));
+        assertFalse(column.hasTokenAt(3));
     }
 
     @Test
@@ -60,8 +61,8 @@ public class ColumnTest {
 
         PlaceTokenInColumn(2, columns);
 
-        assertThat(first.hasTokenAt(0), is(false));
-        assertThat(second.hasTokenAt(0), is(true));
+        assertFalse(first.hasTokenAt(0));
+        assertTrue(second.hasTokenAt(0));
     }
 
     @Test
@@ -73,9 +74,9 @@ public class ColumnTest {
 
         PlaceTokenInColumn(3, columns);
 
-        assertThat(first.hasTokenAt(0), is(false));
-        assertThat(second.hasTokenAt(0), is(false));
-        assertThat(third.hasTokenAt(0), is(true));
+        assertFalse(first.hasTokenAt(0));
+        assertFalse(second.hasTokenAt(0));
+        assertTrue(third.hasTokenAt(0));
 
     }
 

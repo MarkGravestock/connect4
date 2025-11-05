@@ -1,17 +1,18 @@
 package co.uk.softwarecraftsmanship.connect4;
 
 import co.uk.softwarecraftsmanship.connect4.Board;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BoardTest {
 
     private Board board;
 
-    @Before
+    @BeforeEach
     public void setup(){
         board = new Board();
     }
@@ -21,8 +22,8 @@ public class BoardTest {
 
         board.placeTokenAt(0);
 
-        assertThat(board.hasTokenAt(0,0), is(true));
-        assertThat(board.hasTokenAt(1,0), is(false));
+        assertTrue(board.hasTokenAt(0,0));
+        assertFalse(board.hasTokenAt(1,0));
     }
 
     @Test
@@ -31,8 +32,8 @@ public class BoardTest {
         board.placeTokenAt(0);
         board.placeTokenAt(1);
 
-        assertThat(board.hasTokenAt(0,0), is(true));
-        assertThat(board.hasTokenAt(1,0), is(true));
+        assertTrue(board.hasTokenAt(0,0));
+        assertTrue(board.hasTokenAt(1,0));
     }
 
     @Test
@@ -41,9 +42,9 @@ public class BoardTest {
         board.placeTokenAt(0);
         board.placeTokenAt(0);
 
-        assertThat(board.hasTokenAt(0,0), is(true));
-        assertThat(board.hasTokenAt(0,1), is(true));
-        assertThat(board.hasTokenAt(1,0), is(false));
+        assertTrue(board.hasTokenAt(0,0));
+        assertTrue(board.hasTokenAt(0,1));
+        assertFalse(board.hasTokenAt(1,0));
     }
 
     @Test
@@ -52,15 +53,17 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertThat(board.hasTokenAt(0,0), is(false));
-        assertThat(board.hasTokenAt(1,0), is(true));
-        assertThat(board.hasTokenAt(1,1), is(true));
+        assertFalse(board.hasTokenAt(0,0));
+        assertTrue(board.hasTokenAt(1,0));
+        assertTrue(board.hasTokenAt(1,1));
     }
 
-    @Test(expected=IndexOutOfBoundsException.class)
+    @Test
     public void when_a_token_is_placed_in_the_eight_column_then_the_move_is_invalid(){
 
-        board.placeTokenAt(8);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            board.placeTokenAt(8);
+        });
     }
 
     @Test
@@ -71,7 +74,7 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertThat(HasWon(board), is(true));
+        assertTrue(HasWon(board));
 
     }
 
@@ -82,7 +85,7 @@ public class BoardTest {
         board.placeTokenAt(1);
         board.placeTokenAt(1);
 
-        assertThat(HasWon(board), is(false));
+        assertFalse(HasWon(board));
 
     }
 
@@ -94,7 +97,7 @@ public class BoardTest {
         board.placeTokenAt(2);
         board.placeTokenAt(3);
 
-        assertThat(HasWon(board), is(true));
+        assertTrue(HasWon(board));
     }
 
     private boolean HasWon(Board board) {

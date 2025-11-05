@@ -1,9 +1,9 @@
 package co.uk.softwarecraftsmanship.connect4;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameTest {
 
@@ -14,7 +14,7 @@ public class GameTest {
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
-        assertThat(game.hasWinner(Colour.Red), is(true));
+        assertTrue(game.hasWinner(Colour.Red));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class GameTest {
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
         game.playTokenInColumn(0, Colour.Red);
-        assertThat(game.hasWinner(Colour.Red), is(false));
+        assertFalse(game.hasWinner(Colour.Red));
     }
 
 }
