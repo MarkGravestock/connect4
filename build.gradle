@@ -3,7 +3,7 @@ plugins {
     id 'idea'
 }
 
-group = 'co.uk.softwarecraftmanship'
+group = 'co.uk.softwarecraftsmanship'
 version = '1.0-SNAPSHOT'
 
 java {
@@ -14,20 +14,17 @@ java {
 
 repositories {
     mavenCentral()
-    maven {
-        url "https://maven.google.com"
-    }
-    maven {
-        url "https://repo1.maven.org/maven2/"
-    }
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation libs.junit.jupiter
+    testImplementation libs.hamcrest
+    testRuntimeOnly libs.junit.platform.launcher
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
