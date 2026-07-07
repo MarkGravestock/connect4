@@ -1,0 +1,8 @@
+[versions]
+junitJupiter = "6.1.1"
+hamcrest = "3.0"
+
+[libraries]
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junitJupiter" }
+hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
